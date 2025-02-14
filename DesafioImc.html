@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <title>Cálculo de IMC</title>
+        <script>
+            function mensajeinicial(){
+                alert("BIENVENIDO AL CÁLCULO DE IMC");
+            }
+            function calculoIMC(){
+                var peso = parseFloat(document.getElementById("peso").value);
+                var altura = parseFloat(document.getElementById("altura").value); 
+                var resultado; 
+                if (!isNaN(peso) && !isNaN(altura) && peso > 0 && altura > 0) {
+                    resultado = peso / (altura*altura);
+                    alert("TU IMC ES:"+resultado);
+                }  
+                else{
+                    alert("Validar datos capturados, no pueden ir nulos o vacios.");
+                }
+
+                
+            }
+        </script>
+    </head>
+    <body onload="mensajeinicial();">
+        <h1>CALCULO DE IMC DE USUARIO</h1>
+        <p>Introducir tu peso y altura para el cálculo tu IMC</p>
+        <br> 
+        <label for="Peso">Peso:</label>
+        <input id="peso" type="number" placeholder="Ingresa tu Peso en KG" required step="any"></input>
+         <br><br> 
+        <label for="Altura">Altura:</label>
+        <input id="altura" type="number" placeholder="Ingresa tu Altura" required step="any"></input>
+        <br><br> 
+        <button onclick="calculoIMC();">CALCULAR</button>
+    </body>
+</html>
