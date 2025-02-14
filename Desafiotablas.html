@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <title>Generador de Tabla</title>
+        <script>
+
+            	 /* Solo Permite utilizar las telcas numericas, */
+      
+             function isDigits(evt)	{
+                var evt = (evt) ? evt : (window.event) ? window.event : (event)? event: null;
+                var IE = document.all;
+				var cadena = "0123456789";
+				var codigo = (IE) ? evt.keyCode :evt.which;
+				if( codigo==0 || codigo==8 || codigo == 190) return true;	/* cuando el [suprimir] o [backspace] */
+				if (evt.ctrlKey) {return false;}
+				for(var i = 0; i < cadena.length; i++)
+					if(codigo == cadena.charCodeAt(i)) return true;
+				return false;
+		    } 
+            function limpiaTabla(){
+                var tablaDetalle = document.getElementById("myTable");
+                tablaDetalle.innerHTML = '';//VA A REMOVER TODO LO DE LA TABLA
+            }
+            function limpiar(){
+                document.getElementById("myTable").innerHTML = '';
+                document.getElementById("txtcolumna").value = '';
+                document.getElementById("txtfila").value = '';
+            }
+            function GeneraTabla(){
+                limpiaTabla();
+                var columna = parseInt(document.getElementById("txtcolumna").value);
+                var fila = parseInt(document.getElementById("txtfila").value); 
+                var tabla = document.getElementById("myTable");
+                
+                if((fila !=null && fila >0 ) && (columna !=null && columna >0)){
+                    for (var i = 0; i < fila; i++) {
+                    var tr = document.createElement("tr"); // Crear una nueva fila
+                    for (var j = 0; j < columna; j++) {
+                        var td = document.createElement("td"); // Crear una nueva celda
+                        td.appendChild(document.createTextNode("Fila " + (i + 1) + ", Columna" + (j + 1))); // Texto dentro de la celda
+                        tr.appendChild(td); // Agregar la celda a la fila
+                    }
+                    tabla.appendChild(tr); // Agregar la fila a la tabla
+                  }
+                }
+                
+                else {
+                    alert("Ingresa valores correctos!!");
+                }
+                
+            }
+        </script>
+    </head>
+    <body >
+        <h1>GENERADOR DE TABLA</h1>
+        <p>Introducir Filas y Columnas para generación de tabla</p>
+        <br> 
+        <form>
+            <label for="Filas">Filas:</label>
+            <input id="txtfila" type="text" placeholder="Ingresa el Número de Filas" required onkeypress="return isDigits(event);"></input>
+             <br><br> 
+            <label for="Columnas">Columnas:</label>
+            <input id="txtcolumna" type="text" placeholder="Ingresa el Número de Columnas" required 
+            onkeypress="return isDigits(event);"></input>
+            <br><br> 
+            <button type="button" onclick="GeneraTabla(event);">GENERAR TABLA</button>
+            &nbsp; &nbsp; &nbsp;
+            <button type="button" onclick="limpiar(event);">LIMPIAR</button>
+        </form> 
+        <br> 
+        <table id="myTable" border="1"></table>
+       
+    </body>
+</html>
