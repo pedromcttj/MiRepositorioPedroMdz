@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <title>Generador de Arreglo con Rango</title>
+        <script>
+
+            	 /* Solo Permite utilizar las telcas numericas, */
+      
+             function isDigits(evt)	{
+                var evt = (evt) ? evt : (window.event) ? window.event : (event)? event: null;
+                var IE = document.all;
+				var cadena = "-1-2-3-4-5-6-7-8-90123456789";
+				var codigo = (IE) ? evt.keyCode :evt.which;
+				if( codigo==0 || codigo==8 || codigo == 190) return true;	/* cuando el [suprimir] o [backspace] */
+				if (evt.ctrlKey) {return false;}
+				for(var i = 0; i < cadena.length; i++)
+					if(codigo == cadena.charCodeAt(i)) return true;
+				return false;
+		    } 
+
+            function limpiar(){
+                
+                document.getElementById("txtrangoIni").value = '';
+                document.getElementById("txtRangoFin").value = '';
+            }
+            function llamadoFuncion (){
+                Generaarreglo(4,7); 
+                Generaarreglo(-4,7); 
+            }
+            function Generaarreglo(RangoIni,RangoFin){
+               
+                /**var RangoIni = parseInt(document.getElementById("txtrangoIni").value);
+                var RangoFin = parseInt(document.getElementById("txtRangoFin").value); **/
+                var ArraySerie =[];
+                var i = RangoIni;
+
+                if((RangoIni !=null && RangoFin != null) && (RangoIni <= RangoFin) ){
+                    for (i; i <= RangoFin; i++) { 
+                        
+                        ArraySerie.push(i);
+                  } 
+                  alert("Serie de números-->["+ArraySerie+"]"); 
+                  console.log("Serie de números-->["+ArraySerie+"]")
+
+                }
+                
+                else {
+                    alert("Ingresa valores correctos!!");
+                }
+                
+            }
+        </script>
+    </head>
+    <body >
+        <h1>GENERADOR DE ARREGLOS CON RANGO</h1>
+        <p>Introducir los rangos para generar el arreglo.</p>
+        <br> 
+        <form>
+            <!-- <label for="RangoI">Rango Inicial:</label>
+           <input id="txtrangoIni" type="text" placeholder="Ingresa el Rango inicial" required onkeypress="return isDigits(event);"></input>
+             <br><br> 
+            <label for="RangoF">Columnas:</label>
+            <input id="txtRangoFin" type="text" placeholder="Ingresa el Rango final" required 
+            onkeypress="return isDigits(event);"></input>
+            <br><br> -->
+            <button type="button" onclick="llamadoFuncion();">GENERAR ARREGLO</button>
+            &nbsp; &nbsp; &nbsp;
+           <!-- <button type="button" onclick="limpiar(event);">LIMPIAR</button>-->
+        </form> 
+        <br> 
+       
+       
+    </body>
+</html>
