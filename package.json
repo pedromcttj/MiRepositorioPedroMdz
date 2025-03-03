@@ -1,16 +1,27 @@
 {
   "name": "puppeteer",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "node index.js",
+  "dev": "nodemon index.js",
+  "format": "prettier --write ."
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.1.9",
-    "prettier": "^3.5.2"
-  }
+    "prettier": "^3.5.3"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedromcttj/MiRepositorioPedroMdz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pedromcttj/MiRepositorioPedroMdz/issues"
+  },
+  "homepage": "https://github.com/pedromcttj/MiRepositorioPedroMdz#readme",
+  "description": ""
 }
